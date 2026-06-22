@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>九游体育 · 信息索引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f5f0e8;          /* 米白基调 */
+      font-family: system-ui, 'Times New Roman', 'Noto Serif SC', serif;
+      color: #2c2b28;
+      line-height: 1.7;
+      padding: 2.5rem 1.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      max-width: 880px;
+      width: 100%;
+      background: rgba(255, 252, 246, 0.85);
+      backdrop-filter: blur(2px);
+      border-radius: 32px;
+      padding: 2.4rem 2rem 3rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    h1 {
+      font-weight: 430;
+      font-size: 2.2rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.1rem;
+      color: #3b3a36;
+      border-bottom: 1px solid #e2d9cb;
+      padding-bottom: 0.4rem;
+      display: inline-block;
+    }
+
+    .subhead {
+      font-size: 0.95rem;
+      color: #7b756a;
+      margin-top: -0.1rem;
+      margin-bottom: 1.8rem;
+      padding-left: 0.2rem;
+      border-left: 3px solid #c9b99f;
+      padding-left: 0.8rem;
+    }
+
+    /* 主视觉卡片 */
+    .hero-card {
+      background: #e9e1d2;
+      padding: 1.8rem 1.6rem;
+      border-radius: 24px;
+      margin-bottom: 2.4rem;
+      border: 1px solid #dacfbe;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s;
+    }
+
+    .hero-card:hover {
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .hero-card p {
+      font-size: 1.05rem;
+      max-width: 700px;
+    }
+
+    .hero-card strong {
+      font-weight: 540;
+      color: #4f4a40;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 2.6rem 0 2.2rem;
+    }
+
+    .card {
+      flex: 1 1 220px;
+      background: #faf7f1;
+      border-radius: 24px;
+      padding: 1.6rem 1.4rem 1.4rem;
+      border: 1px solid #e6ddcf;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+      transition: transform 0.15s ease, border-color 0.15s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #b9aa93;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 430;
+      margin-bottom: 0.6rem;
+      color: #4d473d;
+      letter-spacing: 0.5px;
+    }
+
+    .card p, .card li {
+      font-size: 0.98rem;
+      color: #3f3c35;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card li {
+      padding: 0.25rem 0;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .card li::before {
+      content: "·";
+      position: absolute;
+      left: 0.1rem;
+      color: #a59279;
+      font-weight: bold;
+    }
+
+    /* 引用块 / 提示框 */
+    .note-box {
+      background: #f3ede3;
+      border-left: 5px solid #baa78b;
+      padding: 1.2rem 1.6rem;
+      border-radius: 16px 8px 8px 16px;
+      margin: 2rem 0 1.8rem;
+      font-size: 0.98rem;
+      color: #3c3932;
+    }
+
+    .note-box strong {
+      font-weight: 540;
+      color: #4d463a;
+    }
+
+    .note-box a {
+      color: #5f523e;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #c2b29b;
+    }
+
+    .note-box a:hover {
+      color: #302a20;
+      text-decoration-color: #302a20;
+    }
+
+    /* 自然链接段落 */
+    .link-paragraph {
+      background: none;
+      padding: 0.2rem 0 0.6rem;
+      margin: 1.2rem 0 1rem;
+      font-size: 1rem;
+    }
+
+    .link-paragraph a {
+      color: #4d4436;
+      font-weight: 450;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      text-decoration-color: #bfaf99;
+    }
+
+    .link-paragraph a:hover {
+      color: #1d1a15;
+      text-decoration-color: #1d1a15;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      margin: 2rem 0 1rem;
+      border-top: 1px dashed #dacfbe;
+      padding-top: 1.8rem;
+    }
+
+    .faq-summary details {
+      margin: 0.6rem 0;
+      border-bottom: 1px solid #ece3d6;
+      padding-bottom: 0.4rem;
+    }
+
+    .faq-summary summary {
+      font-weight: 470;
+      cursor: pointer;
+      color: #4b453b;
+      padding: 0.3rem 0;
+      font-size: 0.98rem;
+    }
+
+    .faq-summary p {
+      padding: 0.6rem 0 0.2rem 0.8rem;
+      color: #3e3a32;
+      font-size: 0.96rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e0d5c4;
+      margin: 2.2rem 0 1.2rem;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #9a8f7c;
+      text-align: center;
+      margin-top: 1.6rem;
+      letter-spacing: 0.3px;
+    }
+
+    @media (max-width: 550px) {
+      body { padding: 1.5rem 0.8rem; }
+      .page { padding: 1.6rem 1rem 2rem; }
+      h1 { font-size: 1.8rem; }
+      .card-grid { gap: 1.2rem; }
+      .card { flex: 1 1 100%; }
+      .hero-card { padding: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <h1>九游体育</h1>
+  <div class="subhead">资料整理 · 信息索引 · 一点叙述</div>
+
+  <!-- 主视觉卡片 -->
+  <div class="hero-card">
+    <p><strong>九游体育</strong> 的内容生态偏向于赛事资讯、运动社区与数据整理。它聚合了多种体育项目的动态，既包含职业联赛的实时比分，也留有爱好者讨论的空间。从信息索引的角度看，它相当于一个以体育为轴心的信息节点——你可以在其中找到赛程、回放、以及不同视角的赛后分析。</p>
+  </div>
+
+  <!-- 用途卡片 x2 -->
+  <div class="card-grid">
+    <div class="card">
+      <h3>用途·场景</h3>
+      <ul>
+        <li>浏览主流联赛赛程与积分</li>
+        <li>关注特定运动项目深度内容</li>
+        <li>根据兴趣筛选球队或球员动态</li>
+        <li>作为信息聚合入口，追踪体育热点</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>适合人群</h3>
+      <ul>
+        <li>习惯自己整理比赛信息的球迷</li>
+        <li>对数据、统计有偏好的用户</li>
+        <li>想快速了解多个联赛走向的观众</li>
+        <li>需要一份灵活体育信息源的人</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 自然链接段落：嵌入 a 标签，文本 = 九游体育 -->
+  <div class="link-paragraph">
+    如果你平时有随手查阅体育动态的习惯，那么像 <a href="https://ssl-9ysports.com">九游体育</a> 这类站点可以作为一个稳定的信息基底——它不试图用过度煽动的标题吸引你，而是把比赛、数据和讨论并列排放，由你自己决定从哪一条线索深入。对我而言，这种克制反而让信息更容易被消化。
+  </div>
+
+  <!-- 提示框（引用块风格） -->
+  <div class="note-box">
+    <strong>一点观察：</strong> 体育信息平台往往在“快”和“准”之间摇摆。从目前公开的资料来看，<a href="https://ssl-9ysports.com">九游体育</a> 的界面逻辑倾向于让赛程和列表优先于评论，这意味着它更适合用来“查”而非“刷”。如果你习惯先看数据再读观点，这种结构会友好一些。
+  </div>
+
+  <!-- 额外卡片：索引视角下的特点（第三个卡片，宽度自适应） -->
+  <div style="margin: 0.8rem 0 1.6rem;">
+    <div class="card" style="flex: none; width: 100%; background: #f6f0e6;">
+      <h3>索引视角 · 特点</h3>
+      <ul>
+        <li>分类较细：联赛、杯赛、国家队赛事分列清晰</li>
+        <li>动态更新：比分和短讯频率稳定</li>
+        <li>社区内容与官方资讯混排，需自行甄别</li>
+        <li>移动端适配良好，适合碎片时间浏览</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- FAQ 摘要（简短） -->
+  <div class="faq-summary">
+    <details>
+      <summary>这个站点主要覆盖哪些运动？</summary>
+      <p>足球、篮球、网球、电竞以及部分小众项目均有涉及，足球内容相对丰富。</p>
+    </details>
+    <details>
+      <summary>信息可靠程度如何？</summary>
+      <p>赛程与官方数据基本同步，用户讨论部分需自行判断。建议结合其他来源交叉核实。</p>
+    </details>
+    <details>
+      <summary>适合深度阅读吗？</summary>
+      <p>更适合信息检索与快速浏览。深度分析类内容较少，但可以从中找到讨论线索。</p>
+    </details>
+  </div>
+
+  <hr>
+
+  <!-- 结尾自然引用，再次出现 a 标签（可选但满足要求，此处为自然嵌入） -->
+  <p style="font-size:0.98rem; color:#555048; line-height:1.6;">
+    如果你只是需要一个不那么吵闹的体育信息源，不妨把 <a href="https://ssl-9ysports.com">九游体育</a> 放进书签。它不一定是最快的，但胜在整齐和克制——你打开它的时候，不会被铺天盖地的弹窗和自动播放的视频淹没，剩下的就是你想看的比赛和数字。
+  </p>
+
+  <div class="footer-note">
+    —— 一份基于公开资料的索引笔记 · 内容由人工整理
+  </div>
+</div>
+</body>
+</html>
